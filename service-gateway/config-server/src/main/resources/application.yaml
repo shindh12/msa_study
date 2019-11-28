@@ -1,0 +1,13 @@
+server:
+  port: 8888
+spring:
+  application:    name: config-server  profiles:    active: native
+  cloud:    config:      server:        native:          search-locations:          - classpath:baseservice/
+          - classpath:socialservice/
+  security:    user:      name: admin
+      password: asdqwe123
+      
+eureka:  instance:    prefer-ip-address: true
+  client:    register-with-eureka: true
+    fetch-registry: true
+    service-url:      default-zone: http://localhost:8761/eureka/

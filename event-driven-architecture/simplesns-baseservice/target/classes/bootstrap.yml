@@ -1,0 +1,25 @@
+spring:
+  application:
+    name: baseservice
+  cloud:    config:      uri: http://localhost:8888
+      username: admin
+      password: asdqwe123
+    
+management:  endpoints:    web:      exposure:        include: "*"
+        
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      default-zone: http://localhost:8761/eureka/
+
+hystrix:
+  command:
+    feed:
+      execution:
+        isolation:
+            thread:
+                timeoutInMilliseconds: 1000

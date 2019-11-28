@@ -1,0 +1,10 @@
+Code 1
+@StreamListener(MQEventListener2.FeedMsgProcessor.INPUT)
+public void processEvent(String msg) {
+	logger.info("Feed Info Consumed : " + msg);
+	String[] msgArr = msg.split(":");
+	
+	logger.info("Feed Info userId : " + msgArr[0]);
+	logger.info("Feed Info postId : " + msgArr[1]);
+	feedService.addFeeds(Long.valueOf(msgArr[0]), Long.valueOf(msgArr[1]));
+}
